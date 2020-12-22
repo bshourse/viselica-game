@@ -9,12 +9,12 @@ class ResultPrinter
     while counter <= 7 do
       file_name = current_path + "/images/#{counter}.txt"
 
-      if File.exists?(file_name)
+      begin
         f = File.new(file_name)
         @status_image << f.read
         f.close
-      else
-        @status_image << "\n[ Изображение не найдено! ]\n"
+      rescue Errno::ENOENT => error
+        @status_image << "\n [Файл не найден: #{error.message}] \n"
       end
       counter += 1
     end
