@@ -1,8 +1,6 @@
-current_path = "./" + File.dirname(__FILE__ )
-
-require current_path + "/game.rb"
-require current_path + "/result_printer"
-require current_path + "/word_reader.rb"
+require_relative 'game'
+require_relative 'result_printer'
+require_relative 'word_reader'
 
 reader = WordReader.new
 
@@ -10,8 +8,6 @@ slovo = reader.read_from_file
 
 game = Game.new(slovo)
 printer = ResultPrinter.new
-
-
 
 while game.status == 0 do
   printer.print_status(game)
